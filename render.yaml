@@ -1,8 +1,9 @@
 services:
+  # A Web Service for the Django App
   - type: web
     name: pandavaz-app
     env: python
-    plan: free # Explicitly set the free plan
+    plan: free
     buildCommand: "./build.sh"
     startCommand: "gunicorn config.wsgi:application"
     envVars:
@@ -15,7 +16,7 @@ services:
       - key: WEB_CONCURRENCY
         value: 4
 
-  - type: pserv # This stands for "Private Service"
+  # A PostgreSQL database
+  - type: psql
     name: pandavaz-db
-    env: postgres
-    plan: free # Explicitly set the free plan for the database
+    plan: free
