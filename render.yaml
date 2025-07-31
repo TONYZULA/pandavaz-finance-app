@@ -9,14 +9,14 @@ services:
     envVars:
       - key: DATABASE_URL
         fromDatabase:
-          name: pandavaz-db
+          name: pandavaz-db # This name must match the database name below
           property: connectionString
       - key: SECRET_KEY
         generateValue: true
       - key: WEB_CONCURRENCY
         value: 4
 
-  # A PostgreSQL database
-  - type: psql
-    name: pandavaz-db
+# The new, correct way to define a database
+databases:
+  - name: pandavaz-db
     plan: free
